@@ -1,0 +1,413 @@
+* {
+  text-transform: none !important;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow: hidden;
+}
+
+span {
+  cursor: default;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+main {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.home {
+  &-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &-header {
+    text-align: center;
+    font-size: 112px;
+    line-height: 96px;
+  }
+
+  &-subheader {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 10vh;
+  }
+
+  &-user-input {
+    width: 350px;
+  }
+
+  &-message {
+    margin-top: 8px;
+    margin-bottom: -32px;
+  }
+}
+
+.lobby {
+  &-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.admin {
+  &-container {
+    width: 100vw;
+    height: 100vh;
+    padding: 16px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+
+    .users-container {
+      position: relative;
+    }
+  }
+
+  &-header {
+    font-size: 24px;
+    text-align: center;
+    width: 100%;
+    height: 32px;
+    margin-bottom: 16px;
+  }
+
+  &-main {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+  }
+
+  &-left, &-middle, &-right {
+    height: calc(100vh - 80px);
+    overflow-y: scroll;
+    flex-shrink: 0;
+    
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    &:nth-child(n + 2) {
+      margin-left: 16px;
+    }
+  }
+
+  &-right {
+    flex-shrink: 1;
+    flex-grow: 1;
+  }
+}
+
+.users {
+  &-wrapper {
+    top: 0px;
+    left: 0px;
+    margin: 16px;
+    height: calc(100vh - 32px);
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+  }
+  &-container {
+    display: flex;
+    flex-direction: column;
+    font-size: 12px;
+    border: 1px solid #cecece;
+    padding: 16px;
+  }
+  &-header {
+    font-size: 12px;
+    margin-bottom: 16px;
+  }
+}
+
+.user {
+  &-container {
+    display: flex;
+    flex-direction: column;
+    &:nth-child(n + 2) {
+      margin-top: 12px;
+    }
+  }
+  &-header-container {
+    display: flex;
+  }
+  &-button {
+    display: block;
+    margin-top: 4px;
+    padding: 2px;
+    font-size: 12px;
+  }
+  &-active-container {
+    height: 18px;
+  }
+  &-active-checkbox {
+    width: 16px;
+    height: 16px;
+    margin-left: auto;
+  }
+  &-active-container,
+  &-points-container,
+  &-wins-container,
+  &-losses-container {
+    display: flex;
+    flex-direction: row;
+    min-width: 110px;
+  }
+  &-mini-button {
+    display: block;
+    margin-top: 4px;
+    padding: 2px;
+    font-size: 12px;
+    display: flex;
+    min-width: 0;
+    width: 18px;
+    height: 18px;
+    line-height: 10px;
+    margin: 0;
+    margin-left: 4px;
+
+    &:first-of-type {
+      margin-left: auto;
+    }
+  }
+}
+
+.admin-module {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  border: 1px solid #cecece;
+  
+  &:nth-child(n + 2) {
+    margin-top: 16px;
+  }
+
+  &.controls-container {
+    margin-top: 16px;
+  }
+}
+
+.game {
+  &-header {
+    display: flex;
+  }
+  &-description {
+    margin-top: 12px;
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+    overflow-x: hidden;
+  }
+  &-message-container {
+    margin-top: 12px;
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+    overflow-x: hidden;
+    text-align: center;
+    min-height: 170px;
+  }
+  &-input {
+    margin-top: 16px;
+    font-size: 12px;
+  }
+}
+
+.lobby-container {
+  .game-description {
+    margin-top: 32px;
+    font-size: 16px;
+    text-align: center;
+  }
+}
+
+.controls {
+  &-wrapper {
+    display: flex;
+
+    .controls-container {
+      width: calc(50% - 8px);
+
+      &:first-child {
+        margin-right: 16px;
+      }
+    }
+  }
+  &-user {
+    display: flex;
+    flex-direction: column;
+    font-size: 12px;
+
+    &:nth-child(n + 2) {
+      margin-top: 16px;
+    }
+
+    &--global {
+      padding-bottom: 32px;
+      margin-bottom: 32px;
+      border-bottom: 1px solid #cecece;
+    }
+  }
+  &-info-container {
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+  }
+  &-message-header {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+  }
+  &-message-button {
+    display: block;
+    margin-top: 4px;
+    padding: 2px 6px;
+    font-size: 12px;
+    display: flex;
+    min-width: 0;
+    height: 18px;
+    line-height: 10px;
+    margin: 0;
+    margin-left: 4px;
+
+    &:first-of-type {
+      margin-left: auto;
+    }
+  }
+  &-message-line {
+    margin-top: 4px;
+
+    input {
+      padding: 4px 12px;
+      font-size: 12px;
+    }
+    label {
+      transform: translate(14px, 6px) scale(1);
+      font-size: 12px;
+
+      &[data-shrink="true"] {
+        transform: translate(14px, -5px) scale(0.75);
+      }
+    }
+    legend > span {
+      font-size: 9px;
+    }
+  }
+  &-global-buttons {
+    padding-top: 16px;
+    margin-top: 16px;
+    border-top: 1px solid #cecece;
+    display: flex;
+    flex-direction: column;
+  }
+  &-global-button {
+    padding: 4px 12px;
+    font-size: 12px;
+
+    &:nth-child(n + 2) {
+      margin-top: 8px;
+    }
+
+    &:last-child {
+      margin-top: 32px;
+    }
+  }
+}
+
+.answers {
+  &-container {
+    padding-bottom: 16px;
+    margin-bottom: 16px;
+    border-bottom: 1px solid #cecece;
+    display: flex;
+    flex-direction: column;
+  }
+  &-header {
+    display: flex;
+    flex-direction: row;
+  }
+  &-answer {
+    display: flex;
+    flex-direction: column;
+
+    &:nth-child(n + 2) {
+      margin-top: 12px;
+    }
+  }
+
+  &-text {
+    font-size: 16px;
+    &:nth-child(n + 2) {
+      font-size: 12px;
+      margin-top: -2px;
+    }
+  }
+}
+
+.waiting:after {
+  overflow: hidden;
+  display: inline-block;
+  vertical-align: bottom;
+  -webkit-animation: alternate ellipsis-start ease-in-out 2s infinite, 
+                     alternate ellipsis-end ease-in-out 2s infinite; 
+  animation: alternate ellipsis-start ease-in-out 2s infinite, 
+             alternate ellipsis-end ease-in-out 2s infinite;
+  content: "\2026\2026";
+  width: 0px;
+}
+
+@keyframes ellipsis-start {
+  from {
+    width: 0px;    
+  }
+  to {
+    width: 18px;    
+  }
+}
+
+@keyframes ellipsis-end {
+  from {
+    width: 18px;    
+  }
+  to {
+    width: 0px;    
+  }
+}
+
+@-webkit-keyframes ellipsis-start {
+  from {
+    width: 0px;    
+  }
+  to {
+    width: 18px;    
+  }
+}
+
+@-webkit-keyframes ellipsis-end {
+  from {
+    width: 18px;
+  }
+  to {
+    width: 0px;    
+  }
+}
